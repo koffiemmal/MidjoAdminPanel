@@ -10,7 +10,7 @@ const Userlist = () => {
   useEffect(()=>{
     const fetchDate = async () => {
       try {
-        const querySnapchot = await getDocs(collection(db, "user"));
+        const querySnapchot = await getDocs(collection(db, "users"));
 
         const userData = querySnapchot.docs.map((doc) => ({
           id: doc.id,

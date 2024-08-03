@@ -3,24 +3,33 @@ import style from "../styles/Form.module.css";
 import logo from "../assets/logoP.png";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../api/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const AddStationList = () => {
+
+  const navigate = useNavigate();
+
   const [nom, setNom] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   const [time, setTime] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const station = { nom, latitude, longitude, time };
-    try {
+    const station = { nom, latitude:Number(latitude),longitude: Number(longitude), time };
+
+   try {
       await addDoc(collection(db, "station"), station);
       console.log("Envoi réussi");
       alert("Station ajoutée avec succès");
+
+        navigate("/acceuil")
+      
+
     } catch (error) {
       console.log(error);
       alert("Erreur lors de l'ajout de la station");
-    }
+    } 
   };
 
   return (

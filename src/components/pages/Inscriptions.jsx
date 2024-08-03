@@ -16,6 +16,8 @@ const Inscription = () => {
   const createAccount = async (event) => {
     event.preventDefault();
 
+    console.log('user check')
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -25,7 +27,9 @@ const Inscription = () => {
 
       const user = userCredential.user;
 
-      await setDoc(doc(db, "admin", user.uid), {
+      console.log(user);
+
+      await setDoc(doc(db, "admins", user.uid), {
         id: user.uid,
         nom: nom,
         prenom: prenom,
@@ -33,9 +37,12 @@ const Inscription = () => {
         createdAt: new Date(),
         // Ajoutez d'autres informations que vous souhaitez stocker
       });
+
+      console.log("apres le set")
+
       alert("utilisateurs cree avec succes");
 
-      navigate("/acceuil");
+      navigate("/");
     } catch (error) {}
   };
   return (
