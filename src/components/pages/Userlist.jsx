@@ -49,8 +49,8 @@ const Userlist = () => {
             {user.map((users) => (
               <tr key={users.id} >
                 <td>{users.id}</td>
-                <td>{users.nom}</td>
-                <td>{users.prenom}</td>
+                <td>{users.Nom}</td>
+                <td>{users.Prenom}</td>
                 <td>+228 {users.phoneNumber}</td>
                 <td>{users.email}</td>
               </tr>

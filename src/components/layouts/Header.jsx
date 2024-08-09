@@ -18,7 +18,7 @@ const Header = () => {
       <div className={style.Sidebar}>
         <section className={style.side}>
           {" "}
-          <NavLink to="/">
+          <NavLink to="/acceuil">
             <h4>Utilisateur</h4>
           </NavLink>
           <NavLink to="/acceuil/station">
